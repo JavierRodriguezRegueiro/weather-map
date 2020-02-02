@@ -1,10 +1,13 @@
 import React from 'react';
+import {Map} from './components/maps/map';
 import './App.css';
 
 
 const App = () => {
   return (
-      <h1>Weather map</h1>
+      <section>
+        <Map />
+      </section>
   )
 };
 export default App;
