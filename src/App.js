@@ -6,6 +6,7 @@ import './App.css';
 class App extends React.Component {
     constructor(props) {
         super(props);
+        //Default value
         this.state = {
             lng: -1.64323,
             lat: 42.81687,
