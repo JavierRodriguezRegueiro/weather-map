@@ -1,29 +1,22 @@
 import React from 'react';
-import {CityInput} from './cityInput.js';
-import renderer from 'react-test-renderer';
-import { act } from 'react-dom/test-utils';
+import {shallow, configure} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import {CityInput} from './cityInput';
 
-test('Create without crash', () => {
-    const component = renderer.create(
-        < CityInput/>,
-    );
-});
+configure({adapter: new Adapter()});
 
-test('Create without crash', () => {
-    const valueToCheck = 'test';
-    let component;
-
-    act(() => {
-        component = renderer.create(
-            < CityInput/>,
-        );
+describe('<CityInput \>', () => {
+    let cityInput;
+    beforeEach(function () {
+        cityInput = shallow(<CityInput/>)
     });
-    //Simulate event onChange
-    let e = {
-        target: {
-            value: valueToCheck
-        }
-    };
-    component.toJSON().props.onChange(e);
-    expect(component.toJSON().props.value).toEqual(valueToCheck);
+
+    it('Render component without crash', () => {
+        expect(cityInput.props().value).toEqual("");
+    });
+    it('Change value onChange event', () => {
+        const event = {target: {value: 'test'}};
+        cityInput.simulate('change', event);
+        expect(cityInput.props().value).toEqual("test");
+    });
 });
