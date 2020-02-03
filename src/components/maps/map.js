@@ -1,6 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-
+import {CityInput} from "../cityInput/cityInput";
 import './map.css';
 
 class Map extends React.Component {
@@ -25,7 +25,10 @@ class Map extends React.Component {
 
     render() {
         return (
-            <map className='map' ref={el => this.mapContainer = el}/>
+            <div>
+                <CityInput/>
+                <map className='map' ref={el => this.mapContainer = el}/>
+            </div>
         );
     }
 }
