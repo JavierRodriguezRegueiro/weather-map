@@ -4,10 +4,6 @@ import {CityInput} from "../cityInput/cityInput";
 import './map.css';
 
 class Map extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         mapboxgl.accessToken = 'pk.eyJ1IjoiamF2aXJvIiwiYSI6ImNqZGVlY3NtajBibnAyeG9od3NobndyaDAifQ.NvJ__KXHEIIZpR6c9tG6Og';
         this.map = new mapboxgl.Map({
