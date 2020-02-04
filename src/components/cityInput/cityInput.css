@@ -1,0 +1,19 @@
+.cityInput {
+    z-index: 1;
+    width: 90%;
+    height: 30px;
+    font-size: 13px;
+    padding-left: 7px;
+    -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+
+@media (min-aspect-ratio: 9/8) {
+    .cityInput {
+        width: 250px;
+    }
+}
