@@ -21,7 +21,7 @@ describe('<CityInput \>', () => {
         expect(cityInput.find('input').props().value).toEqual("test");
         expect(cityInput.find('button').length).toEqual(1);
     });
-    it('Reset inout value on click in button', () => {
+    it('Reset input value on click in button', () => {
         const event = {target: {value: 'test'}};
         cityInput.find('input').simulate('change', event);
         cityInput.find('button').simulate('click');
