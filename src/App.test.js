@@ -10,7 +10,8 @@ describe('<App \>', () => {
     const mockState = {
         lat: 42.81687,
         lng: -1.64323,
-        zoom: 10
+        zoom: 10,
+        city: ''
     };
     let app;
     beforeEach(function () {
@@ -20,6 +21,7 @@ describe('<App \>', () => {
         expect(app.state('lat')).toEqual(mockState.lat);
         expect(app.state('lng')).toEqual(mockState.lng);
         expect(app.state('zoom')).toEqual(mockState.zoom);
+        expect(app.state('city')).toEqual(mockState.city);
     });
 
     it('Change state using setCenter', () => {
@@ -31,5 +33,13 @@ describe('<App \>', () => {
 
         expect(app.state('lat')).toEqual(mockState.lat + 3);
         expect(app.state('lng')).toEqual(mockState.lng + 3);
+    })
+
+    it('Change state using setCity', () => {
+        const componentInstance = app.instance();
+        const city = 'Pamplona';
+        componentInstance.setCity(city);
+        expect(app.state('lat')).not.toBe(mockState.city);
+        expect(app.state('city')).toEqual(city);
     })
 });

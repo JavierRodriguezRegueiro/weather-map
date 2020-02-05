@@ -10,7 +10,8 @@ class App extends React.Component {
         this.state = {
             lng: -1.64323,
             lat: 42.81687,
-            zoom: 10
+            zoom: 10,
+            city: ''
         };
     }
 
@@ -19,6 +20,12 @@ class App extends React.Component {
             lng: lng,
             lat: lat,
             zoom: 10 // if the center is changed, i set always the same zoom
+        })
+    };
+
+    setCity = (city) => {
+        this.setState({
+            city: city
         })
     };
 
