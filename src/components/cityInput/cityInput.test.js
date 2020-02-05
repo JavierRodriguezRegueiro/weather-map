@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow, configure} from 'enzyme';
+import {shallow, configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {CityInput} from './cityInput';
 
@@ -12,11 +12,19 @@ describe('<CityInput \>', () => {
     });
 
     it('Render component without crash', () => {
-        expect(cityInput.props().value).toEqual("");
+        expect(cityInput.find('input').props().value).toEqual("");
+        expect(cityInput.props().children[1]).toEqual("");
     });
     it('Change value onChange event', () => {
         const event = {target: {value: 'test'}};
-        cityInput.simulate('change', event);
-        expect(cityInput.props().value).toEqual("test");
+        cityInput.find('input').simulate('change', event);
+        expect(cityInput.find('input').props().value).toEqual("test");
+        expect(cityInput.find('button').length).toEqual(1);
+    });
+    it('Reset inout value on click in button', () => {
+        const event = {target: {value: 'test'}};
+        cityInput.find('input').simulate('change', event);
+        cityInput.find('button').simulate('click');
+        expect(cityInput.find('input').props().value).toEqual("");
     });
 });

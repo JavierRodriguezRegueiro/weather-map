@@ -1,14 +1,38 @@
 .cityInput {
+    position: relative;
     z-index: 1;
     width: 90%;
     height: 30px;
-    font-size: 13px;
-    padding-left: 7px;
+    border: none;
+}
+
+.cityInput-input {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100%;
+    border: none;
     -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.75);
-    border: none;
     border-radius: 4px;
+    padding-left: 7px;
+    font-size: 16px;
+    outline: none;
+}
+
+.cityInput-removeContentButton {
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    background-color: transparent;
+    border: none;
+    width: 24px;
+    background-size: 17px 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("./../../assets/img/cross.svg");
+    cursor: pointer;
     outline: none;
 }
 
