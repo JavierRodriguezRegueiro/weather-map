@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow, configure, mount} from 'enzyme';
+import {shallow, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {CityInput} from './cityInput';
 
@@ -26,5 +26,11 @@ describe('<CityInput \>', () => {
         cityInput.find('input').simulate('change', event);
         cityInput.find('button').simulate('click');
         expect(cityInput.find('input').props().value).toEqual("");
+    });
+    it('Check callback execution', () => {
+        const callbackFunction = jest.fn();
+        const cityInputWithCallback = shallow(<CityInput callback = {callbackFunction}/>)
+        cityInputWithCallback.simulate('keyDown', {keyCode: 13})
+        expect(callbackFunction).toBeCalled();
     });
 });
