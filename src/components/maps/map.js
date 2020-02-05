@@ -22,7 +22,7 @@ class Map extends React.Component {
     render() {
         return (
             <div className='map'>
-                <CityInput/>
+                <CityInput callback={this.props.callback}/>
                 <map className='map-renderMap' ref={el => this.mapContainer = el}/>
             </div>
         );

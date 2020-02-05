@@ -31,6 +31,11 @@ describe('<CityInput \>', () => {
         const callbackFunction = jest.fn();
         const cityInputWithCallback = shallow(<CityInput callback = {callbackFunction}/>)
         cityInputWithCallback.simulate('keyDown', {keyCode: 13})
-        expect(callbackFunction).toBeCalled();
+        expect(callbackFunction).toBeCalledWith('');
+
+        const event = {target: {value: 'test'}};
+        cityInputWithCallback.find('input').simulate('change', event);
+        cityInputWithCallback.simulate('keyDown', {keyCode: 13})
+        expect(callbackFunction).toBeCalledWith('test');
     });
 });

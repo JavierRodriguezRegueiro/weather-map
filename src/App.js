@@ -29,10 +29,18 @@ class App extends React.Component {
         })
     };
 
+    fetchCityData = (city) => {
+        fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/'
+            +encodeURIComponent(city)+
+            '.json?access_token=pk.eyJ1IjoiamF2aXJvIiwiYSI6ImNqZGVlY3NtajBibnAyeG9od3NobndyaDAifQ.NvJ__KXHEIIZpR6c9tG6Og')
+            .then((response) => {return response.json()})
+            .then((data) => {this.setCenter(data.features[0].center[0], data.features[0].center[1])})
+    };
+
     render() {
         return (
             <section>
-                <Map lng={this.state.lng} lat={this.state.lat} zoom={this.state.zoom}/>
+                <Map lng={this.state.lng} lat={this.state.lat} zoom={this.state.zoom} callback={this.fetchCityData}/>
             </section>
         )
     }
