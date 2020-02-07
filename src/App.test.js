@@ -24,22 +24,37 @@ describe('<App \>', () => {
         expect(app.state('city')).toEqual(mockState.city);
     });
 
-    it('Change state using setCenter', () => {
+    it('Change state using setLocationInfo', () => {
         const componentInstance = app.instance();
-        componentInstance.setCenter(mockState.lng + 3, mockState.lat + 3);
+        const city = 'Pamplona';
+        componentInstance.setLocationInfo(mockState.lng + 3, mockState.lat + 3, city);
         expect(app.state('lat')).not.toBe(mockState.lat);
         expect(app.state('lng')).not.toBe(mockState.lng);
-        expect(app.state('zoom')).toEqual(mockState.zoom);
+        expect(app.state('city')).not.toBe(mockState.city);
 
         expect(app.state('lat')).toEqual(mockState.lat + 3);
         expect(app.state('lng')).toEqual(mockState.lng + 3);
-    })
-
-    it('Change state using setCity', () => {
-        const componentInstance = app.instance();
-        const city = 'Pamplona';
-        componentInstance.setCity(city);
-        expect(app.state('lat')).not.toBe(mockState.city);
         expect(app.state('city')).toEqual(city);
-    })
+    });
+
+    it('Check getLat', () => {
+        const componentInstance = app.instance();
+        expect(componentInstance.getLat()).toEqual(mockState.lat);
+    });
+
+    it('Check getLng', () => {
+        const componentInstance = app.instance();
+        expect(componentInstance.getLng()).toEqual(mockState.lng);
+    });
+
+    it('Check getZoom', () => {
+        const componentInstance = app.instance();
+        expect(componentInstance.getZoom()).toEqual(mockState.zoom);
+    });
+
+    it('Check getCity', () => {
+        const componentInstance = app.instance();
+        expect(componentInstance.getCity()).toEqual(mockState.city);
+    });
+
 });
