@@ -11,9 +11,13 @@ class App extends React.Component {
             lng: -1.64323,
             lat: 42.81687,
             zoom: 10,
-            city: ''
+            city: '',
+            summary: '',
+            tmp: '',
+            precProb: ''
         };
     }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.city.toLowerCase() !== this.getCity().toLowerCase()) {
             fetch('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/3cf4a0b084cbcceee010f5f51db70be1/' + this.getLat() + ',' + this.getLng() + '?units=si')
@@ -21,7 +25,7 @@ class App extends React.Component {
                     return response.json();
                 })
                 .then((data) => {
-                    console.log(data);
+                    this.setWeatherInfo(data.currently.summary, data.currently.temperature, data.currently.precipProbability);
                 });
         }
     }
@@ -42,11 +46,31 @@ class App extends React.Component {
         return this.state.city;
     };
 
+    getSummary = () => {
+        return this.state.summary;
+    };
+
+    getTemperature = () => {
+        return this.state.tmp;
+    };
+
+    getPrecProb = () => {
+        return this.state.precProb;
+    };
+
     setLocationInfo = (lng, lat, city) => {
         this.setState({
             lng: lng,
             lat: lat,
             city: city
+        });
+    };
+
+    setWeatherInfo = (summary, tmp, precProb) => {
+        this.setState({
+            summary: summary,
+            tmp: tmp,
+            precProb: precProb
         });
     };
 

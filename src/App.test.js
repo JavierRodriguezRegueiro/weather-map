@@ -8,10 +8,13 @@ configure({adapter: new Adapter()});
 
 describe('<App \>', () => {
     const mockState = {
-        lat: 42.81687,
         lng: -1.64323,
+        lat: 42.81687,
         zoom: 10,
-        city: ''
+        city: '',
+        summary: '',
+        tmp: '',
+        precProb: ''
     };
     let app;
     beforeEach(function () {
@@ -37,6 +40,23 @@ describe('<App \>', () => {
         expect(app.state('city')).toEqual(city);
     });
 
+    it('Change state using setWeatherInfo', () => {
+        const componentInstance = app.instance();
+        const weatherInfo = {
+            summary: 'Test text',
+            tmp: 10,
+            precProb: 10
+        };
+        componentInstance.setWeatherInfo(weatherInfo.summary, weatherInfo.tmp, weatherInfo.precProb);
+        expect(app.state('summary')).not.toBe(mockState.summary);
+        expect(app.state('tmp')).not.toBe(mockState.tmp);
+        expect(app.state('precProb')).not.toBe(mockState.precProb);
+
+        expect(app.state('summary')).toEqual(weatherInfo.summary);
+        expect(app.state('tmp')).toEqual(weatherInfo.tmp);
+        expect(app.state('precProb')).toEqual(weatherInfo.precProb);
+    });
+
     it('Check getLat', () => {
         const componentInstance = app.instance();
         expect(componentInstance.getLat()).toEqual(mockState.lat);
@@ -55,6 +75,21 @@ describe('<App \>', () => {
     it('Check getCity', () => {
         const componentInstance = app.instance();
         expect(componentInstance.getCity()).toEqual(mockState.city);
+    });
+
+    it('Check getTemperature', () => {
+        const componentInstance = app.instance();
+        expect(componentInstance.getTemperature()).toEqual(mockState.tmp);
+    });
+
+    it('Check getSummary', () => {
+        const componentInstance = app.instance();
+        expect(componentInstance.getSummary()).toEqual(mockState.summary);
+    });
+
+    it('Check getPrecProb', () => {
+        const componentInstance = app.instance();
+        expect(componentInstance.getPrecProb()).toEqual(mockState.precProb);
     });
 
 });
