@@ -1,5 +1,6 @@
 import React from 'react';
 import {Map} from './components/maps/map';
+import {Info} from "./components/info/info";
 import './App.css';
 
 
@@ -90,6 +91,7 @@ class App extends React.Component {
         return (
             <section>
                 <Map lng={this.getLng()} lat={this.getLat()} zoom={this.getZoom()} callback={this.fetchCityData}/>
+                {this.getSummary() && <Info summary={this.getSummary()} tmp={this.getTemperature()} precProb={this.getPrecProb()}/>}
             </section>
         )
     }
