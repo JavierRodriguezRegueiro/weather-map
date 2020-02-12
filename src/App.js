@@ -1,6 +1,7 @@
 import React from 'react';
 import {Map} from './components/maps/map';
 import {Info} from "./components/info/info";
+import {geolocation} from "./utils/geolocation/geolocation";
 import './App.css';
 
 
@@ -75,16 +76,13 @@ class App extends React.Component {
         });
     };
 
-    fetchCityData = (city) => {
-        fetch('https://api.mapbox.com/geocoding/v5/mapbox.places/'
-            + encodeURIComponent(city) +
-            '.json?access_token=pk.eyJ1IjoiamF2aXJvIiwiYSI6ImNqZGVlY3NtajBibnAyeG9od3NobndyaDAifQ.NvJ__KXHEIIZpR6c9tG6Og')
-            .then((response) => {
-                return response.json()
-            })
-            .then((data) => {
-                this.setLocationInfo(data.features[0].center[0], data.features[0].center[1], city);
-            })
+    fetchCityData = async (city) => {
+        try {
+            const {lng, lat } = await geolocation(city);
+            this.setLocationInfo(lng, lat, city);
+        } catch (e) {
+            //No handler here
+        }
     };
 
     render() {
