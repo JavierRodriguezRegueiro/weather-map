@@ -3,6 +3,7 @@ import {Map} from './components/maps/map';
 import {Info} from "./components/info/info";
 import {geolocation} from "./utils/geolocation/geolocation";
 import './App.css';
+import {weatherInfo} from "./utils/weatherInfo/weatherInfo";
 
 
 class App extends React.Component {
@@ -18,18 +19,6 @@ class App extends React.Component {
             tmp: '',
             precProb: ''
         };
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevState.city.toLowerCase() !== this.getCity().toLowerCase()) {
-            fetch('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/3cf4a0b084cbcceee010f5f51db70be1/' + this.getLat() + ',' + this.getLng() + '?units=si')
-                .then((response) => {
-                    return response.json();
-                })
-                .then((data) => {
-                    this.setWeatherInfo(data.currently.summary, data.currently.temperature, data.currently.precipProbability);
-                });
-        }
     }
 
     getLat = () => {
@@ -60,16 +49,12 @@ class App extends React.Component {
         return this.state.precProb;
     };
 
-    setLocationInfo = (lng, lat, city) => {
+    setInfo = (lng, lat, city, summary, tmp, precProb) => {
         this.setState({
             lng: lng,
             lat: lat,
-            city: city
-        });
-    };
-
-    setWeatherInfo = (summary, tmp, precProb) => {
-        this.setState({
+            zoom: 10,
+            city: city,
             summary: summary,
             tmp: tmp,
             precProb: precProb
@@ -79,7 +64,8 @@ class App extends React.Component {
     fetchCityData = async (city) => {
         try {
             const {lng, lat } = await geolocation(city);
-            this.setLocationInfo(lng, lat, city);
+            const {summary, tmp, precProb} = await weatherInfo(lat, lng);
+            this.setInfo(lng, lat, city, summary, tmp, precProb);
         } catch (e) {
             //No handler here
         }

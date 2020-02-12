@@ -27,31 +27,25 @@ describe('<App \>', () => {
         expect(app.state('city')).toEqual(mockState.city);
     });
 
-    it('Change state using setLocationInfo', () => {
-        const componentInstance = app.instance();
-        const city = 'Pamplona';
-        componentInstance.setLocationInfo(mockState.lng + 3, mockState.lat + 3, city);
-        expect(app.state('lat')).not.toBe(mockState.lat);
-        expect(app.state('lng')).not.toBe(mockState.lng);
-        expect(app.state('city')).not.toBe(mockState.city);
-
-        expect(app.state('lat')).toEqual(mockState.lat + 3);
-        expect(app.state('lng')).toEqual(mockState.lng + 3);
-        expect(app.state('city')).toEqual(city);
-    });
-
-    it('Change state using setWeatherInfo', () => {
+    it('Change state using setInfo', () => {
         const componentInstance = app.instance();
         const weatherInfo = {
             summary: 'Test text',
             tmp: 10,
             precProb: 10
         };
-        componentInstance.setWeatherInfo(weatherInfo.summary, weatherInfo.tmp, weatherInfo.precProb);
+        const city = 'Pamplona';
+        componentInstance.setInfo(mockState.lng + 3, mockState.lat + 3, city, weatherInfo.summary, weatherInfo.tmp, weatherInfo.precProb);
+        expect(app.state('lat')).not.toBe(mockState.lat);
+        expect(app.state('lng')).not.toBe(mockState.lng);
+        expect(app.state('city')).not.toBe(mockState.city);
         expect(app.state('summary')).not.toBe(mockState.summary);
         expect(app.state('tmp')).not.toBe(mockState.tmp);
         expect(app.state('precProb')).not.toBe(mockState.precProb);
 
+        expect(app.state('lat')).toEqual(mockState.lat + 3);
+        expect(app.state('lng')).toEqual(mockState.lng + 3);
+        expect(app.state('city')).toEqual(city);
         expect(app.state('summary')).toEqual(weatherInfo.summary);
         expect(app.state('tmp')).toEqual(weatherInfo.tmp);
         expect(app.state('precProb')).toEqual(weatherInfo.precProb);
