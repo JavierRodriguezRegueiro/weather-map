@@ -17,6 +17,9 @@ class Map extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.map.setZoom(this.props.zoom);
         this.map.flyTo({center: [this.props.lng, this.props.lat], essential: true});
+        var marker = new mapboxgl.Marker()
+            .setLngLat([this.props.lng, this.props.lat])
+            .addTo(this.map);
     }
 
     render() {
