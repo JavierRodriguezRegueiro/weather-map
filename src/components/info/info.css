@@ -10,6 +10,20 @@
     overflow-y: auto;
     white-space: nowrap;
     scroll-snap-stop: always;
+    opacity: 1;
+    animation-name: infoHeight;
+    animation-duration: 1s;
+}
+
+@keyframes infoHeight {
+    from {
+        opacity: 0;
+        right: -9999px;
+    }
+    to {
+        opacity: 1;
+        right: 10px;
+    }
 }
 
 .infoElement-title {
