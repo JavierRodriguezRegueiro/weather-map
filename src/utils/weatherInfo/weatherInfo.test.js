@@ -1,5 +1,4 @@
 import {weatherInfo} from "./weatherInfo";
-import {geolocation} from "../geolocation/geolocation";
 
 describe('weatherInfo function', () => {
     const mockData = {
