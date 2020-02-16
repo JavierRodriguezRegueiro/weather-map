@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import './infoModal.css';
 
+Modal.setAppElement('#root');
 const InfoModal = (props) => {
     return(
         <Modal

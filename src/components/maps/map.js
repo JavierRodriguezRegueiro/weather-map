@@ -15,11 +15,13 @@ class Map extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        this.map.setZoom(this.props.zoom);
-        this.map.flyTo({center: [this.props.lng, this.props.lat], essential: true});
-        new mapboxgl.Marker()
-            .setLngLat([this.props.lng, this.props.lat])
-            .addTo(this.map);
+        if (prevProps.lat !== this.props.lat && prevProps.lng !== this.props.lng) {
+            this.map.setZoom(this.props.zoom);
+            this.map.flyTo({center: [this.props.lng, this.props.lat], essential: true});
+            new mapboxgl.Marker()
+                .setLngLat([this.props.lng, this.props.lat])
+                .addTo(this.map);
+        }
     }
 
     render() {
