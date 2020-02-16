@@ -1,9 +1,11 @@
 import React from 'react';
+import {InfoModal} from "./components/Modals/infoModal/infoModal";
 import {Map} from './components/maps/map';
 import {Info} from "./components/info/info";
 import {geolocation} from "./utils/geolocation/geolocation";
-import './App.css';
 import {weatherInfo} from "./utils/weatherInfo/weatherInfo";
+import './App.css';
+
 
 
 class App extends React.Component {
@@ -17,7 +19,8 @@ class App extends React.Component {
             city: '',
             summary: '',
             tmp: '',
-            precProb: ''
+            precProb: '',
+            error: false
         };
     }
 
@@ -49,6 +52,10 @@ class App extends React.Component {
         return this.state.precProb;
     };
 
+    getError = () => {
+        return this.state.error;
+    };
+
     setInfo = (lng, lat, city, summary, tmp, precProb) => {
         this.setState({
             lng: lng,
@@ -61,19 +68,31 @@ class App extends React.Component {
         });
     };
 
+    setError = (value) => {
+        this.setState({
+            error: value
+        })
+    };
+
     fetchCityData = async (city) => {
         try {
             const {lng, lat } = await geolocation(city);
             const {summary, tmp, precProb} = await weatherInfo(lat, lng);
             this.setInfo(lng, lat, city, summary, tmp, precProb);
         } catch (e) {
-            //No handler here
+            this.setError(true);
         }
     };
 
     render() {
         return (
             <section>
+                <InfoModal
+                    isOpen={this.getError()}
+                    onRequestClose={() => this.setError(false)}
+                    title='Oh, there was an error during the request'
+                    extraInfo='Check what are you trying to search'
+                />
                 <Map lng={this.getLng()} lat={this.getLat()} zoom={this.getZoom()} callback={this.fetchCityData}/>
                 {this.getSummary() && <Info summary={this.getSummary()} tmp={this.getTemperature()} precProb={this.getPrecProb()}/>}
             </section>
