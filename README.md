@@ -14,7 +14,7 @@ cd weather-map
 npm install
 npm start
 ```
-
+In any case, here it is a [live demo](https://w-map.netlify.com)
 ### Running the tests
 
 ```
