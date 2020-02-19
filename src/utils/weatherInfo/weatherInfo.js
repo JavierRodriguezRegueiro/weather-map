@@ -1,10 +1,13 @@
 const DarkSkyToken = '3cf4a0b084cbcceee010f5f51db70be1';
 
-export const weatherInfo = async (latitutde, logitude) => {
-    if (typeof latitutde !== 'number' || typeof logitude !== 'number') {
+// It is necessary due to avoid cors policy in the browser
+const noCorsMiddleWare = 'https://cors-anywhere.herokuapp.com/';
+const darkSkyUrl = 'https://api.darksky.net/forecast/';
+export const weatherInfo = async (latitude, longitude) => {
+    if (typeof latitude !== 'number' || typeof longitude !== 'number') {
         throw new Error('You passing arguments.');
     }
-    return fetch('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + DarkSkyToken + '/' + latitutde + ',' + logitude + '?units=si')
+    return fetch(noCorsMiddleWare + darkSkyUrl + DarkSkyToken + '/' + latitude + ',' + longitude + '?units=si')
         .then((response) => {
             return response.json();
         })
