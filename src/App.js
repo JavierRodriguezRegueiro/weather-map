@@ -1,55 +1,50 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {InfoModal} from "./components/Modals/infoModal/infoModal";
 import {Map} from './components/maps/map';
 import {Info} from "./components/info/info";
 import {geolocation} from "./utils/geolocation/geolocation";
 import {weatherInfo} from "./utils/weatherInfo/weatherInfo";
+import {setWeatherInfo} from "./actions/weatherActions";
 import './App.css';
 
 
 
-class App extends React.Component {
+export class App extends React.Component {
     constructor(props) {
         super(props);
         //Default value
         this.state = {
-            lng: -1.64323,
-            lat: 42.81687,
-            zoom: 10,
-            city: '',
-            summary: '',
-            tmp: '',
-            precProb: '',
             error: false
         };
     }
 
     getLat = () => {
-        return this.state.lat;
+        return this.props.weatherReducer.lat;
     };
 
     getLng = () => {
-        return this.state.lng;
+        return this.props.weatherReducer.lng;
     };
 
     getZoom = () => {
-        return this.state.zoom;
+        return this.props.weatherReducer.zoom;
     };
 
     getCity = () => {
-        return this.state.city;
+        return this.props.weatherReducer.city;
     };
 
     getSummary = () => {
-        return this.state.summary;
+        return this.props.weatherReducer.summary;
     };
 
     getTemperature = () => {
-        return this.state.tmp;
+        return this.props.weatherReducer.tmp;
     };
 
     getPrecProb = () => {
-        return this.state.precProb;
+        return this.props.weatherReducer.precProb;
     };
 
     getError = () => {
@@ -57,15 +52,7 @@ class App extends React.Component {
     };
 
     setInfo = (lng, lat, city, summary, tmp, precProb) => {
-        this.setState({
-            lng: lng,
-            lat: lat,
-            zoom: 10,
-            city: city,
-            summary: summary,
-            tmp: tmp,
-            precProb: precProb
-        });
+        this.props.dispatch(setWeatherInfo(lng, lat, city, summary, tmp, precProb));
     };
 
     setError = (value) => {
@@ -100,4 +87,10 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const MapStateToProps = (state) => {
+    return {
+        weatherReducer: state
+    }
+};
+
+export default connect(MapStateToProps)(App);
