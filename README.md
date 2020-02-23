@@ -33,6 +33,8 @@ It will create a build directory with all the resources
 ## Built With
 
 * [React](https://reactjs.org) - JS library to develop UI components
+* [Redux](https://redux.js.org) - Package to have a global state container
+* [React-Redux](https://react-redux.js.org) - JS library to connect React components with Redux
 * [Jest](https://jestjs.io) - JS framework to test components
 * [Enzyme](https://airbnb.io/enzyme/) - JS utility to overcome some restrictions with Jest
 * [Mapbox](https://www.mapbox.com) - API to allow to create a map component and locate particular places and cities
