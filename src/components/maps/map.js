@@ -2,8 +2,9 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import {CityInput} from "../cityInput/cityInput";
 import './map.css';
+import {connect} from "react-redux";
 
-class Map extends React.PureComponent {
+export class Map extends React.PureComponent {
     componentDidMount() {
         mapboxgl.accessToken = 'pk.eyJ1IjoiamF2aXJvIiwiYSI6ImNqZGVlY3NtajBibnAyeG9od3NobndyaDAifQ.NvJ__KXHEIIZpR6c9tG6Og';
         this.map = new mapboxgl.Map({
@@ -32,4 +33,12 @@ class Map extends React.PureComponent {
     }
 }
 
-export {Map};
+const MapStateToProps = (state) => {
+    return {
+        lat: state.lat,
+        lng: state.lng,
+        zoom: state.zoom
+    }
+};
+
+export default connect(MapStateToProps)(Map);

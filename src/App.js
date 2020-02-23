@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {InfoModal} from "./components/Modals/infoModal/infoModal";
-import {Map} from './components/maps/map';
+import Map from './components/maps/map';
 import {Info} from "./components/info/info";
 import {geolocation} from "./utils/geolocation/geolocation";
 import {weatherInfo} from "./utils/weatherInfo/weatherInfo";
@@ -80,7 +80,7 @@ export class App extends React.Component {
                     title='Oh, there was an error during the request'
                     extraInfo='Check what are you trying to search'
                 />
-                <Map lng={this.getLng()} lat={this.getLat()} zoom={this.getZoom()} callback={this.fetchCityData}/>
+                <Map callback={this.fetchCityData}/>
                 {this.getSummary() && <Info summary={this.getSummary()} tmp={this.getTemperature()} precProb={this.getPrecProb()}/>}
             </section>
         )
