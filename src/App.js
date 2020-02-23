@@ -2,16 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {InfoModal} from "./components/Modals/infoModal/infoModal";
 import Map from './components/maps/map';
-import {Info} from "./components/info/info";
+import Info from "./components/info/info";
 import {geolocation} from "./utils/geolocation/geolocation";
 import {weatherInfo} from "./utils/weatherInfo/weatherInfo";
 import {setWeatherInfo} from "./actions/weatherActions";
 import './App.css';
 
 
-
 export class App extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         //Default value
         this.state = {
@@ -63,7 +62,7 @@ export class App extends React.Component {
 
     fetchCityData = async (city) => {
         try {
-            const {lng, lat } = await geolocation(city);
+            const {lng, lat} = await geolocation(city);
             const {summary, tmp, precProb} = await weatherInfo(lat, lng);
             this.setInfo(lng, lat, city, summary, tmp, precProb);
         } catch (e) {
@@ -71,7 +70,7 @@ export class App extends React.Component {
         }
     };
 
-    render() {
+    render () {
         return (
             <section>
                 <InfoModal
@@ -81,7 +80,7 @@ export class App extends React.Component {
                     extraInfo='Check what are you trying to search'
                 />
                 <Map callback={this.fetchCityData}/>
-                {this.getSummary() && <Info summary={this.getSummary()} tmp={this.getTemperature()} precProb={this.getPrecProb()}/>}
+                {this.getSummary() && <Info/>}
             </section>
         )
     }

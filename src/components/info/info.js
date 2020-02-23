@@ -1,7 +1,8 @@
 import React from 'react';
 import './info.css';
+import {connect} from "react-redux";
 
-const Info = (props) => {
+export const Info = (props) => {
     return (
         <section className='info'>
             <InfoElement title='Summary' information={props.summary}/>
@@ -20,4 +21,12 @@ const InfoElement = (props) => {
     );
 };
 
-export {Info}
+const MapStateToProps = (state) => {
+    return {
+        summary: state.summarizer,
+        tmp: state.tmp,
+        precProb: state.precProb
+    }
+};
+
+export default connect(MapStateToProps)(Info);
