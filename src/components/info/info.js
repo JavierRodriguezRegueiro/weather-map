@@ -23,7 +23,7 @@ const InfoElement = (props) => {
 
 const MapStateToProps = (state) => {
     return {
-        summary: state.summarizer,
+        summary: state.summary,
         tmp: state.tmp,
         precProb: state.precProb
     }
