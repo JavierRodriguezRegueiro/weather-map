@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {InfoModal} from "./components/Modals/infoModal/infoModal";
-import Map from './components/maps/map';
-import Info from "./components/info/info";
-import {geolocation} from "./utils/geolocation/geolocation";
-import {weatherInfo} from "./utils/weatherInfo/weatherInfo";
-import {setWeatherInfo} from "./actions/weatherActions";
+import {InfoModal} from "../Modals/infoModal/infoModal";
+import Map from '../maps/map';
+import Info from "../info/info";
+import {geolocation} from "../../utils/geolocation/geolocation";
+import {weatherInfo} from "../../utils/weatherInfo/weatherInfo";
+import {setWeatherInfo} from "../../actions/weatherActions";
 import './App.css';
 
 
