@@ -1,6 +1,7 @@
 import React from 'react';
 import './info.css';
 import {connect} from "react-redux";
+import PropTypes from "prop-types";
 
 export const Info = (props) => {
     return (
@@ -19,6 +20,12 @@ const InfoElement = (props) => {
             <p className='infoElement-info'>{props.information}</p>
         </div>
     );
+};
+
+Info.propTypes = {
+    summary: PropTypes.string.isRequired,
+    tmp: PropTypes.number.isRequired,
+    precProb: PropTypes.number.isRequired
 };
 
 const MapStateToProps = (state) => {

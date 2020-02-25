@@ -3,6 +3,7 @@ import mapboxgl from 'mapbox-gl';
 import {CityInput} from "../cityInput/cityInput";
 import './map.css';
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 
 export class Map extends React.PureComponent {
     componentDidMount() {
@@ -32,6 +33,12 @@ export class Map extends React.PureComponent {
         );
     }
 }
+
+Map.propTypes = {
+    lat: PropTypes.number.isRequired,
+    lng: PropTypes.number.isRequired,
+    zoom: PropTypes.number.isRequired
+};
 
 const MapStateToProps = (state) => {
     return {

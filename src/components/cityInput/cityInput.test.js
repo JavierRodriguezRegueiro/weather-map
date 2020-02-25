@@ -8,7 +8,7 @@ configure({adapter: new Adapter()});
 describe('<CityInput \>', () => {
     let cityInput;
     beforeEach(function () {
-        cityInput = shallow(<CityInput/>)
+        cityInput = shallow(<CityInput callback={() => {}}/>)
     });
 
     it('Render component without crash', () => {

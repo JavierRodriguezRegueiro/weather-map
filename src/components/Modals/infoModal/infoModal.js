@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import './infoModal.css';
+import PropTypes from "prop-types";
 
 if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 const InfoModal = (props) => {
@@ -16,6 +17,11 @@ const InfoModal = (props) => {
             {props.extraInfo && <p>{props.extraInfo}</p>}
         </Modal>
     );
+};
+
+InfoModal.propTypes = {
+    title: PropTypes.string.isRequired,
+    extraInfo: PropTypes.string
 };
 
 export {InfoModal}

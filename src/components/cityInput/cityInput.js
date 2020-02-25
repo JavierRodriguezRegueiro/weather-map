@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './cityInput.css';
+import PropTypes from "prop-types";
 
 const CityInput = (props) => {
     const [content, setContent] = useState('');
@@ -16,7 +17,9 @@ const CityInput = (props) => {
         <div className='cityInput' onKeyDown={(e) => {
             handleIntro(e, props.callback, content)
         }}>
-            <input className='cityInput-input' placeholder='Enter city name...' ref={(input) => { textInput = input; }} onChange={(e) => {
+            <input className='cityInput-input' placeholder='Enter city name...' ref={(input) => {
+                textInput = input;
+            }} onChange={(e) => {
                 setContent(e.target.value)
             }} value={content}/>
             {content && <button className='cityInput-removeContentButton' onClick={(e) => {
@@ -25,5 +28,9 @@ const CityInput = (props) => {
         </div>
     );
 }
+
+CityInput.propTypes = {
+    callback: PropTypes.func.isRequired
+};
 
 export {CityInput}
