@@ -24,7 +24,7 @@ const CityInput = (props) => {
             }} value={content}/>
             {content && <button className='cityInput-removeContentButton' onClick={(e) => {
                 setContent('')
-            }}></button>}
+            }}/>}
         </div>
     );
 }
