@@ -38,4 +38,8 @@ describe('<CityInput \>', () => {
         cityInputWithCallback.simulate('keyDown', {keyCode: 13})
         expect(callbackFunction).toBeCalledWith('test');
     });
+    it('should be loading', () => {
+        cityInput.setProps({loading: true})
+        expect(cityInput.find('div.cityInput-loading').length).toBe(1);
+    });
 });

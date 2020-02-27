@@ -22,6 +22,7 @@ describe('<App \>', () => {
     });
     it('Render component without crash', () => {
         expect(app.state('error')).toEqual(false);
+        expect(app.state('loading')).toEqual(false);
     });
 
     it('Check getLat', () => {

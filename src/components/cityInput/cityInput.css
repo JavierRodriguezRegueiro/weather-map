@@ -36,6 +36,22 @@
     outline: none;
 }
 
+.cityInput-loading {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+    border: none;
+    width: 24px;
+    background-size: 30px 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("./../../assets/img/spinner.gif");
+    cursor: none;
+    outline: none;
+}
+
 @media only screen and (min-width: 700px) {
     .cityInput {
         width: 250px;

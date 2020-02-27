@@ -22,9 +22,10 @@ const CityInput = (props) => {
             }} onChange={(e) => {
                 setContent(e.target.value)
             }} value={content}/>
-            {content && <button className='cityInput-removeContentButton' onClick={(e) => {
+            {content && !props.loading && <button className='cityInput-removeContentButton' onClick={(e) => {
                 setContent('')
             }}/>}
+            {props.loading && <div className='cityInput-loading'/>}
         </div>
     );
 }

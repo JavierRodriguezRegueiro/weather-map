@@ -27,7 +27,7 @@ export class Map extends React.PureComponent {
     render() {
         return (
             <div className='map'>
-                <CityInput callback={this.props.callback}/>
+                <CityInput callback={this.props.callback} loading={this.props.loading}/>
                 <map className='map-renderMap' ref={el => this.mapContainer = el}/>
             </div>
         );

@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {InfoModal} from "../Modals/infoModal/infoModal";
+import {ScrimModal} from "../Modals/scrimModal/scrimModal";
 import Map from '../maps/map';
 import Info from "../info/info";
 import {geolocation} from "../../utils/geolocation/geolocation";
@@ -14,7 +15,8 @@ export class App extends React.Component {
         super(props);
         //Default value
         this.state = {
-            error: false
+            error: false,
+            loading: false
         };
     }
 
@@ -50,6 +52,16 @@ export class App extends React.Component {
         return this.state.error;
     };
 
+    getLoading = () => {
+        return this.state.loading;
+    };
+
+    setLoading = (value) => {
+        this.setState({
+            loading: value
+        })
+    }
+
     setInfo = (lng, lat, city, summary, tmp, precProb) => {
         this.props.dispatch(setWeatherInfo(lng, lat, city, summary, tmp, precProb));
     };
@@ -61,12 +73,15 @@ export class App extends React.Component {
     };
 
     fetchCityData = async (city) => {
+        this.setLoading(true);
         try {
             const {lng, lat} = await geolocation(city);
             const {summary, tmp, precProb} = await weatherInfo(lat, lng);
             this.setInfo(lng, lat, city, summary, tmp, precProb);
         } catch (e) {
             this.setError(true);
+        } finally {
+            this.setLoading(false);
         }
     };
 
@@ -79,7 +94,10 @@ export class App extends React.Component {
                     title='Oh, there was an error during the request'
                     extraInfo='Check what are you trying to search'
                 />
-                <Map callback={this.fetchCityData}/>
+                <ScrimModal
+                    isOpen={this.getLoading()}
+                />
+                <Map callback={this.fetchCityData} loading={this.getLoading()}/>
                 {this.getSummary() && <Info/>}
             </section>
         )
