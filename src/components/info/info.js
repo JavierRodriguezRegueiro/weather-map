@@ -28,11 +28,11 @@ Info.propTypes = {
     precProb: PropTypes.number.isRequired
 };
 
-const MapStateToProps = (state) => {
+const MapStateToProps = ({weatherReducer}) => {
     return {
-        summary: state.summary,
-        tmp: state.tmp,
-        precProb: state.precProb
+        summary: weatherReducer.summary,
+        tmp: weatherReducer.tmp,
+        precProb: weatherReducer.precProb
     }
 };
 

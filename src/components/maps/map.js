@@ -1,6 +1,6 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import {CityInput} from "../cityInput/cityInput";
+import CityInput from "../cityInput/cityInput";
 import './map.css';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
@@ -30,7 +30,7 @@ export class Map extends React.PureComponent {
     render() {
         return (
             <div className='map'>
-                <CityInput callback={this.props.callback} loading={this.props.loading}/>
+                <CityInput callback={this.props.callback}/>
                 <map className='map-renderMap' ref={el => this.mapContainer = el}/>
             </div>
         );
@@ -43,11 +43,11 @@ Map.propTypes = {
     zoom: PropTypes.number.isRequired
 };
 
-const MapStateToProps = (state) => {
+const MapStateToProps = ({weatherReducer}) => {
     return {
-        lat: state.lat,
-        lng: state.lng,
-        zoom: state.zoom
+        lat: weatherReducer.lat,
+        lng: weatherReducer.lng,
+        zoom: weatherReducer.zoom
     }
 };
 

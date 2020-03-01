@@ -6,20 +6,12 @@ import Map from '../maps/map';
 import Info from "../info/info";
 import {geolocation} from "../../utils/geolocation/geolocation";
 import {weatherInfo} from "../../utils/weatherInfo/weatherInfo";
-import {setWeatherInfo} from "../../actions/weatherActions";
+import {setWeatherInfo} from "../../actions/weatherActions/weatherActions";
+import {setLoading, setError} from "../../actions/statusActions/statusActions";
 import './App.css';
 
 
 export class App extends React.Component {
-    constructor (props) {
-        super(props);
-        //Default value
-        this.state = {
-            error: false,
-            loading: false
-        };
-    }
-
     getLat = () => {
         return this.props.weatherReducer.lat;
     };
@@ -49,27 +41,23 @@ export class App extends React.Component {
     };
 
     getError = () => {
-        return this.state.error;
+        return this.props.error;
     };
 
     getLoading = () => {
-        return this.state.loading;
+        return this.props.loading;
     };
 
     setLoading = (value) => {
-        this.setState({
-            loading: value
-        })
-    }
+        this.props.dispatch(setLoading(value));
+    };
 
     setInfo = (lng, lat, city, summary, tmp, precProb) => {
         this.props.dispatch(setWeatherInfo(lng, lat, city, summary, tmp, precProb));
     };
 
     setError = (value) => {
-        this.setState({
-            error: value
-        })
+        this.props.dispatch(setError(value));
     };
 
     fetchCityData = async (city) => {
@@ -97,7 +85,7 @@ export class App extends React.Component {
                 <ScrimModal
                     isOpen={this.getLoading()}
                 />
-                <Map callback={this.fetchCityData} loading={this.getLoading()}/>
+                <Map callback={this.fetchCityData}/>
                 {this.getSummary() && <Info/>}
             </section>
         )
@@ -106,7 +94,9 @@ export class App extends React.Component {
 
 const MapStateToProps = (state) => {
     return {
-        weatherReducer: state
+        weatherReducer: state.weatherReducer,
+        error: state.statusReducer.error,
+        loading: state.statusReducer.loading
     }
 };
 

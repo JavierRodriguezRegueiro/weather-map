@@ -18,11 +18,12 @@ describe('<App \>', () => {
     };
     let app;
     beforeEach(function () {
-        app = shallow(<App weatherReducer={mockProps}/>)
+        app = shallow(<App weatherReducer={mockProps} loading={false} error={false}/>)
     });
     it('Render component without crash', () => {
-        expect(app.state('error')).toEqual(false);
-        expect(app.state('loading')).toEqual(false);
+        const componentInstance = app.instance();
+        expect(componentInstance.props.error).toEqual(false);
+        expect(componentInstance.props.loading).toEqual(false);
     });
 
     it('Check getLat', () => {
@@ -60,25 +61,19 @@ describe('<App \>', () => {
         expect(componentInstance.getPrecProb()).toEqual(mockProps.precProb);
     });
 
-    it('Check getError', () => {
-        const componentInstance = app.instance();
-        expect(componentInstance.getError()).toEqual(false);
-    });
-
     it('Should change error state', () => {
+        const fn = jest.fn();
+        app.setProps({dispatch: fn});
         const componentInstance = app.instance();
         componentInstance.setError(true);
-        expect(componentInstance.getError()).toEqual(true);
-    });
-
-    it('Check getLoading', () => {
-        const componentInstance = app.instance();
-        expect(componentInstance.getLoading()).toEqual(false);
+        expect(fn).toBeCalledWith({"error": true, "type": "SET_ERROR"});
     });
 
     it('Should change loading state', () => {
+        const fn = jest.fn();
+        app.setProps({dispatch: fn});
         const componentInstance = app.instance();
-        componentInstance.setLoading(true);
-        expect(componentInstance.getLoading()).toEqual(true);
+        componentInstance.setLoading(false);
+        expect(fn).toBeCalledWith({"loading": false, "type": "SET_LOADING"});
     });
 });

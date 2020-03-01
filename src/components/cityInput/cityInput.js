@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import './cityInput.css';
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
-const CityInput = (props) => {
+export const CityInput = (props) => {
     const [content, setContent] = useState('');
     let textInput;
 
@@ -34,4 +35,9 @@ CityInput.propTypes = {
     callback: PropTypes.func.isRequired
 };
 
-export {CityInput}
+const MapStateToProps = ({statusReducer}) => {
+    return {
+        loading: statusReducer.loading
+    }
+};
+export default connect(MapStateToProps)(CityInput);
