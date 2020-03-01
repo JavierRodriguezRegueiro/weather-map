@@ -60,4 +60,25 @@ describe('<App \>', () => {
         expect(componentInstance.getPrecProb()).toEqual(mockProps.precProb);
     });
 
+    it('Check getError', () => {
+        const componentInstance = app.instance();
+        expect(componentInstance.getError()).toEqual(false);
+    });
+
+    it('Should change error state', () => {
+        const componentInstance = app.instance();
+        componentInstance.setError(true);
+        expect(componentInstance.getError()).toEqual(true);
+    });
+
+    it('Check getLoading', () => {
+        const componentInstance = app.instance();
+        expect(componentInstance.getLoading()).toEqual(false);
+    });
+
+    it('Should change loading state', () => {
+        const componentInstance = app.instance();
+        componentInstance.setLoading(true);
+        expect(componentInstance.getLoading()).toEqual(true);
+    });
 });
