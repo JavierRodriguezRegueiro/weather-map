@@ -14,14 +14,17 @@ export class Map extends React.PureComponent {
             center: [this.props.lng, this.props.lat],
             zoom: this.props.zoom
         });
+
+        this.markers = [];
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.map.setZoom(this.props.zoom);
         this.map.flyTo({center: [this.props.lng, this.props.lat], essential: true});
-        new mapboxgl.Marker()
+        this.markers.forEach(mark => mark.remove());
+        this.markers.push(new mapboxgl.Marker()
             .setLngLat([this.props.lng, this.props.lat])
-            .addTo(this.map);
+            .addTo(this.map));
     }
 
     render() {
