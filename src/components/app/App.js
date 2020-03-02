@@ -2,16 +2,32 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {InfoModal} from "../Modals/infoModal/infoModal";
 import {ScrimModal} from "../Modals/scrimModal/scrimModal";
+import HourlyDataModal from "../Modals/hourlyDataModal/hourlyDataModal";
 import Map from '../maps/map';
 import Info from "../info/info";
 import {geolocation} from "../../utils/geolocation/geolocation";
 import {weatherInfo} from "../../utils/weatherInfo/weatherInfo";
 import {setWeatherInfo, setHourlyData} from "../../actions/weatherActions/weatherActions";
-import {setLoading, setError} from "../../actions/statusActions/statusActions";
+import {setLoading, setError, setShowHourlyData} from "../../actions/statusActions/statusActions";
 import './App.css';
 
 
 export class App extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            showHourly: false
+        }
+    }
+
+    getShowHourly = () => {
+        return this.props.showHourly;
+    };
+
+    setShowHourly = (value) => {
+        this.props.dispatch(setShowHourlyData(value))
+    };
+
     getLat = () => {
         return this.props.weatherReducer.lat;
     };
@@ -90,6 +106,10 @@ export class App extends React.Component {
                 <ScrimModal
                     isOpen={this.getLoading()}
                 />
+                <HourlyDataModal
+                    isOpen={this.getShowHourly()}
+                    onRequestClose={() => this.setShowHourly(false)}
+                />
                 <Map callback={this.fetchCityData}/>
                 {this.getSummary() && <Info/>}
             </section>
@@ -101,7 +121,8 @@ const MapStateToProps = (state) => {
     return {
         weatherReducer: state.weatherReducer,
         error: state.statusReducer.error,
-        loading: state.statusReducer.loading
+        loading: state.statusReducer.loading,
+        showHourly: state.statusReducer.showHourly
     }
 };
 

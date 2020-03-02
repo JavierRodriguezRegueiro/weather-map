@@ -1,0 +1,46 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+.hourlyDataModal-modal {
+    background-color: white;
+    outline: none;
+    width: 90%;
+    position: relative;
+    padding: 10px;
+    margin: 50% auto 0;
+    border-radius: 5px;
+}
+
+.modal-close {
+    position: absolute;
+    height: 30px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    width: 24px;
+    background-size: 17px 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("./../../../assets/img/cross.svg");
+    cursor: pointer;
+    outline: none;
+}
+
+@media only screen and (min-width: 600px){
+    .hourlyDataModal-modal {
+        margin: 10% auto 0;
+    }
+}
+
+@media (min-aspect-ratio: 4/3) {
+    .hourlyDataModal-modal {
+        width: 50%;
+    }
+}
