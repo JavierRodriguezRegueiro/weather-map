@@ -18,7 +18,8 @@ export const weatherInfo = async (latitude, longitude) => {
             return {
                 summary: data.currently.summary,
                 tmp: data.currently.temperature,
-                precProb: data.currently.precipProbability
+                precProb: data.currently.precipProbability,
+                hourlyData: data.hourly.data
             }
         });
 }

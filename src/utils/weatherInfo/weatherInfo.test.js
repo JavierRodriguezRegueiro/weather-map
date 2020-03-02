@@ -6,10 +6,11 @@ describe('weatherInfo function', () => {
         lng: -1.65
     };
     it('Check weatherInfo result', async () => {
-        const {summary, tmp, precProb} = await weatherInfo(mockData.lat, mockData.lng);
+        const {summary, tmp, precProb, hourlyData} = await weatherInfo(mockData.lat, mockData.lng);
         expect(typeof summary).toBe('string');
         expect(typeof tmp).toBe('number');
         expect(typeof precProb).toBe('number');
+        expect(typeof  hourlyData).toBe('object')
     });
     it('Check weatherInfo result with bad arguments', async () => {
         const dummyData = {

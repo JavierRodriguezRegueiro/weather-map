@@ -5,7 +5,8 @@ const weatherDefaultValues = {
     city: '',
     summary: '',
     tmp: '',
-    precProb: ''
+    precProb: '',
+    hourlyData: {}
 };
 
 export const weatherReducer = (state = weatherDefaultValues, action) => {
@@ -21,6 +22,11 @@ export const weatherReducer = (state = weatherDefaultValues, action) => {
                 tmp: action.tmp,
                 precProb: action.precProb
             };
+        case 'SET_HOURLY_DATA':
+            return {
+                ...state,
+                hourlyData: action.hourlyData
+            }
         default:
             return state;
     }

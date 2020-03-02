@@ -1,4 +1,4 @@
-import {setWeatherInfo} from "./weatherActions";
+import {setHourlyData, setWeatherInfo} from "./weatherActions";
 
 describe('setWeatherInfo function', () => {
     const mockInfo = {
@@ -8,7 +8,8 @@ describe('setWeatherInfo function', () => {
         city: '',
         summary: '',
         tmp: '',
-        precProb: ''
+        precProb: '',
+        hourlyData: {test: 'test'}
     };
     it('should create an action to add information', () => {
         const expectedAction = {
@@ -23,4 +24,12 @@ describe('setWeatherInfo function', () => {
         };
         expect(setWeatherInfo(mockInfo.lng, mockInfo.lat, mockInfo.city, mockInfo.summary, mockInfo.tmp, mockInfo.precProb)).toEqual(expectedAction);
     })
-})
+
+    it('should create an action to add hourly data', () => {
+        const expectedAction = {
+            type: 'SET_HOURLY_DATA',
+            hourlyData: mockInfo.hourlyData
+        };
+        expect(setHourlyData(mockInfo.hourlyData)).toEqual(expectedAction);
+    })
+});

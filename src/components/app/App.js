@@ -6,7 +6,7 @@ import Map from '../maps/map';
 import Info from "../info/info";
 import {geolocation} from "../../utils/geolocation/geolocation";
 import {weatherInfo} from "../../utils/weatherInfo/weatherInfo";
-import {setWeatherInfo} from "../../actions/weatherActions/weatherActions";
+import {setWeatherInfo, setHourlyData} from "../../actions/weatherActions/weatherActions";
 import {setLoading, setError} from "../../actions/statusActions/statusActions";
 import './App.css';
 
@@ -60,12 +60,17 @@ export class App extends React.Component {
         this.props.dispatch(setError(value));
     };
 
+    setWeatherHourlyData = (data) => {
+        this.props.dispatch(setHourlyData(data))
+    };
+
     fetchCityData = async (city) => {
         this.setLoading(true);
         try {
             const {lng, lat} = await geolocation(city);
-            const {summary, tmp, precProb} = await weatherInfo(lat, lng);
+            const {summary, tmp, precProb, hourlyData} = await weatherInfo(lat, lng);
             this.setInfo(lng, lat, city, summary, tmp, precProb);
+            this.setWeatherHourlyData(hourlyData);
         } catch (e) {
             this.setError(true);
         } finally {
