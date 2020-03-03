@@ -95,6 +95,14 @@
     background-size: cover;
 }
 
+.infoElement .infoElement-title,
+.infoElement .infoElement-info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 190px;
+}
+
 @media (min-aspect-ratio: 11/8){
     .info {
         top: 10px;
@@ -118,14 +126,6 @@
     .hourtly {
         height: auto;
         flex-direction: row;
-    }
-
-    .infoElement .infoElement-title,
-    .infoElement .infoElement-info {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 190px;
     }
 
     .infoElement .infoElement-info {
