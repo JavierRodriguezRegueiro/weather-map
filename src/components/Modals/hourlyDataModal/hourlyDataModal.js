@@ -40,6 +40,7 @@ class LineGraph extends React.Component {
                     {
                         label: "Temperature",
                         data: this.data,
+                        backgroundColor: 'rgba(0,150,136,0.5)'
                     }
                 ]
             },
@@ -51,8 +52,6 @@ class LineGraph extends React.Component {
                     display: true,
                     text: 'Temperature'
                 },
-                animation: false,
-                //Customize chart options
             }
         });
     }
