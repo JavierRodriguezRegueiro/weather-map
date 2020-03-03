@@ -19,11 +19,6 @@ export class App extends React.Component {
             showHourly: false
         }
     }
-    componentDidMount() {
-        document.addEventListener('touchmove', function(e) {
-            e.preventDefault();
-        }, { passive: false });
-    }
 
     getShowHourly = () => {
         return this.props.showHourly;
