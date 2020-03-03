@@ -6,7 +6,7 @@ import './hourlyDataModal.css';
 
 if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
-const HourlyDataModal = (props) => {
+export const HourlyDataModal = (props) => {
         return (
             <Modal
                 isOpen={props.isOpen}
@@ -59,7 +59,7 @@ class LineGraph extends React.Component {
 
     handleData = () => {
         // Just the first ten elements will be rendered
-        const tenFirstElements = Object.values(this.props.data).slice(0,12);
+        const tenFirstElements = this.props.data.slice(0,12);
         this.data = [];
         this.labels = [];
         tenFirstElements.forEach((hour) => {

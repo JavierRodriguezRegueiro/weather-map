@@ -69,6 +69,14 @@ describe('<App \>', () => {
         expect(fn).toBeCalledWith({"error": true, "type": "SET_ERROR"});
     });
 
+    it('Should change showing hourly data', () => {
+        const fn = jest.fn();
+        app.setProps({dispatch: fn});
+        const componentInstance = app.instance();
+        componentInstance.setShowHourly(false);
+        expect(fn).toBeCalledWith({type: 'SET_SHOW_HOURLYDATA', showHourly: false});
+    });
+
     it('Should change loading state', () => {
         const fn = jest.fn();
         app.setProps({dispatch: fn});
