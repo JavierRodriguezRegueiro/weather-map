@@ -21,6 +21,6 @@ describe('<CityInput \>', () => {
     it('Check labels', () => {
         expect(info.childAt(0).props().children[0].props.information).toBe(mockProps.summary);
         expect(info.childAt(0).props().children[1].props.information).toBe(mockProps.tmp + ' °C');
-        expect(info.childAt(0).props().children[2].props.information).toBe(mockProps.precProb+ '%');
+        expect(info.childAt(0).props().children[2].props.information).toBe(mockProps.precProb * 100+ '%');
     });
 });

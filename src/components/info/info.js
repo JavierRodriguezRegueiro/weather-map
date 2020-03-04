@@ -9,7 +9,7 @@ export const Info = (props) => {
         <section className='info'>
             <InfoElement title='Summary' information={props.summary}/>
             <InfoElement title='Temperature' information={props.tmp + ' °C'}/>
-            <InfoElement title='Precipitation probability' information={props.precProb + '%'}/>
+            <InfoElement title='Precipitation probability' information={props.precProb * 100 + '%'}/>
             <HourlyButton onClick={() => props.dispatch(setShowHourlyData(true))}/>
         </section>
     );
