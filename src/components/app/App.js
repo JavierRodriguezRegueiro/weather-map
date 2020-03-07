@@ -86,7 +86,6 @@ export class App extends React.Component {
             const {lng, lat} = await geolocation(city);
             const {summary, tmp, precProb, hourlyData, offset} = await weatherInfo(lat, lng);
             this.setInfo(lng, lat, city, summary, tmp, precProb);
-            debugger;
             this.setWeatherHourlyData(hourlyData, offset);
         } catch (e) {
             this.setError(true);

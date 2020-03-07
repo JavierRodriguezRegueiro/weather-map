@@ -15,7 +15,6 @@ export const weatherInfo = async (latitude, longitude) => {
             if(data.error) {
                 throw new Error(data.error);
             }
-            debugger;
             return {
                 summary: data.currently.summary,
                 tmp: data.currently.temperature,
