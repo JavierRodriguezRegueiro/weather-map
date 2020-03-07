@@ -9,7 +9,8 @@ export const setWeatherInfo = (lng, lat, city, summary, tmp, precProb) => ({
     precProb: precProb
 });
 
-export const setHourlyData = (data) => ({
+export const setHourlyData = (data, offset) => ({
     type: 'SET_HOURLY_DATA',
-    hourlyData: data
+    hourlyData: data,
+    offset: offset
 });

@@ -76,17 +76,18 @@ export class App extends React.Component {
         this.props.dispatch(setError(value));
     };
 
-    setWeatherHourlyData = (data) => {
-        this.props.dispatch(setHourlyData(data))
+    setWeatherHourlyData = (data, offset) => {
+        this.props.dispatch(setHourlyData(data, offset))
     };
 
     fetchCityData = async (city) => {
         this.setLoading(true);
         try {
             const {lng, lat} = await geolocation(city);
-            const {summary, tmp, precProb, hourlyData} = await weatherInfo(lat, lng);
+            const {summary, tmp, precProb, hourlyData, offset} = await weatherInfo(lat, lng);
             this.setInfo(lng, lat, city, summary, tmp, precProb);
-            this.setWeatherHourlyData(hourlyData);
+            debugger;
+            this.setWeatherHourlyData(hourlyData, offset);
         } catch (e) {
             this.setError(true);
         } finally {

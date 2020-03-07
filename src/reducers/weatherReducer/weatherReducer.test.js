@@ -9,7 +9,8 @@ describe('weatherReducer', () => {
         summary: '',
         tmp: '',
         precProb: '',
-        hourlyData: {}
+        hourlyData: {},
+        offset: 1
     };
     it('should return the initial state', () => {
         expect(weatherReducer(undefined, {})).toEqual(defaultMockedState);
@@ -23,7 +24,8 @@ describe('weatherReducer', () => {
             summary: 'test',
             tmp: 'test',
             precProb: 'test',
-            hourlyData: {}
+            hourlyData: {},
+            offset: 1
         };
         const mockedAction = {
             type: 'SET_INFO',
@@ -34,13 +36,16 @@ describe('weatherReducer', () => {
 
     it('should handle SET_HOURLY_DATA', () => {
         const hourData = {test: 'test'};
+        const offset = 3;
         const mockInfo = {
             ...defaultMockedState,
-            hourlyData: hourData
+            hourlyData: hourData,
+            offset: offset
         }
         const mockedAction = {
             type: 'SET_HOURLY_DATA',
-            hourlyData: hourData
+            hourlyData: hourData,
+            offset: offset
         };
         expect(weatherReducer(undefined, mockedAction)).toEqual(mockInfo);
     });
