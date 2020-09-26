@@ -26,10 +26,10 @@ const InfoElement = (props) => {
 
 const HourlyButton = (props) => {
     return(
-        <div className='hourtly' onClick={props.onClick}>
+        <button className='hourtly' onClick={props.onClick}>
             <div className='hourtly-icon'/>
             <p className='hourly-label'>Hourly</p>
-        </div>
+        </button>
         );
 };
 
