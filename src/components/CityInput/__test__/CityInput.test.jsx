@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow, configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {CityInput} from './cityInput';
+import {CityInput} from '../index';
 
 configure({adapter: new Adapter()});
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './info.css';
+import './Info.css';
 import {connect} from "react-redux";
 import {setShowHourlyData} from "../../actions/statusActions/statusActions";
 import PropTypes from "prop-types";

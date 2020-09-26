@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import Chart from "chart.js";
 import moment from "moment";
 import {connect} from "react-redux";
-import './hourlyDataModal.css';
+import './HourlyDataModal.css';
 
 if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 

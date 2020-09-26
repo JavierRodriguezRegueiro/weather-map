@@ -1,4 +1,4 @@
-import {setHourlyData, setWeatherInfo} from "./weatherActions";
+import {setHourlyData, setWeatherInfo} from "../weatherActions";
 
 describe('setWeatherInfo function', () => {
     const mockInfo = {

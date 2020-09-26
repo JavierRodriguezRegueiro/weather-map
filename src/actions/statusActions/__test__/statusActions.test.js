@@ -1,4 +1,4 @@
-import {setError, setLoading, setShowHourlyData} from "./statusActions";
+import {setError, setLoading, setShowHourlyData} from "../statusActions";
 
 describe('statusActions functions', () => {
     const mockInfo = {

@@ -1,5 +1,5 @@
 import React from "react";
-import './scrimModal.css';
+import './ScrimModal.css';
 import PropTypes from "prop-types";
 
 const ScrimModal = (props) => {

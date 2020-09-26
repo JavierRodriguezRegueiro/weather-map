@@ -1,4 +1,4 @@
-import {statusReducer} from "./statusReducer";
+import {statusReducer} from "../statusReducer";
 
 describe('statusReducer', () => {
     it('should return the initial state', () => {

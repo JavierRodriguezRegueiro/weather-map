@@ -1,4 +1,4 @@
-import {weatherReducer} from "./weatherReducer";
+import {weatherReducer} from "../weatherReducer";
 
 describe('weatherReducer', () => {
     const defaultMockedState = {

@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {InfoModal} from "../Modals/infoModal/infoModal";
-import {ScrimModal} from "../Modals/scrimModal/scrimModal";
-import HourlyDataModal from "../Modals/hourlyDataModal/hourlyDataModal";
-import Map from '../maps/map';
-import Info from "../info/info";
+import {InfoModal} from "../Modals/InfoModal";
+import {ScrimModal} from "../Modals/ScrimModal";
+import HourlyDataModal from "../Modals/HourlyDataModal";
+import Map from '../Maps';
+import Info from "../Info";
 import {geolocation} from "../../utils/geolocation/geolocation";
 import {weatherInfo} from "../../utils/weatherInfo/weatherInfo";
 import {setWeatherInfo, setHourlyData} from "../../actions/weatherActions/weatherActions";

@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import './infoModal.css';
+import './InfoModal.css';
 import PropTypes from "prop-types";
 
 if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');

@@ -1,7 +1,7 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-import CityInput from "../cityInput/cityInput";
-import './map.css';
+import CityInput from "../CityInput";
+import './Map.css';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
 

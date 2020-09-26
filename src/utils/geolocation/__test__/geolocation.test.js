@@ -1,4 +1,4 @@
-import {geolocation} from "./geolocation";
+import {geolocation} from "../geolocation";
 
 describe('Geolocation function', () => {
     const mockData = {
