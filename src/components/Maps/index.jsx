@@ -4,6 +4,7 @@ import CityInput from "../CityInput";
 import './Map.css';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
+import {Info} from "../Info";
 
 export class Map extends React.PureComponent {
     componentDidMount() {
@@ -42,6 +43,10 @@ Map.propTypes = {
     lng: PropTypes.number.isRequired,
     zoom: PropTypes.number.isRequired
 };
+
+Map.defaultProps = {
+    // All props are currently required
+}
 
 const MapStateToProps = ({weatherReducer}) => {
     return {

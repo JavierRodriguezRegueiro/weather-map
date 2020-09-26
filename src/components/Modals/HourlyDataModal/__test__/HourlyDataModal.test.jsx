@@ -6,7 +6,7 @@ configure({adapter: new Adapter()});
 
 describe('<InfoModal />', () => {
     it('should render without crash', () => {
-        const infoModal = shallow(<HourlyDataModal/>);
+        const infoModal = shallow(<HourlyDataModal data={[]} isOpen={true} offset={3}/>);
         expect(infoModal).not.toBe(null);
     });
 });

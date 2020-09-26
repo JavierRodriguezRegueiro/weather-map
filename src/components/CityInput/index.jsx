@@ -35,6 +35,10 @@ CityInput.propTypes = {
     callback: PropTypes.func.isRequired
 };
 
+CityInput.defaultProps = {
+    // default callback is not defined due to is required
+}
+
 const MapStateToProps = ({statusReducer}) => {
     return {
         loading: statusReducer.loading

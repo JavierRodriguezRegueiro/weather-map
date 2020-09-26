@@ -39,6 +39,10 @@ Info.propTypes = {
     precProb: PropTypes.number.isRequired
 };
 
+Info.defaultProps = {
+    // All props are currently required
+}
+
 const MapStateToProps = ({weatherReducer}) => {
     return {
         summary: weatherReducer.summary,

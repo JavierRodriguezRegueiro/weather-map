@@ -14,4 +14,8 @@ ScrimModal.propTypes = {
     isOpen: PropTypes.bool.isRequired
 };
 
+ScrimModal.defaultProps = {
+    // All props are currently required
+}
+
 export {ScrimModal}

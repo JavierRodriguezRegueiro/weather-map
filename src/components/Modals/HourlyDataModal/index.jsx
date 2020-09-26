@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import Chart from "chart.js";
 import moment from "moment";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import './HourlyDataModal.css';
 
@@ -73,7 +74,7 @@ class LineGraph extends React.Component {
     };
 
     handleOffset = (date) => {
-        const currentOffset = moment().utcOffset();;
+        const currentOffset = moment().utcOffset();
         const searchLocationOffset = this.props.offset;
         let hourOffset = date.getHours() + (searchLocationOffset - currentOffset / 60);
         hourOffset = hourOffset >= 24 ? hourOffset - 24 : hourOffset;
@@ -95,6 +96,11 @@ class LineGraph extends React.Component {
     }
 }
 
+HourlyDataModal.propTypes = {
+    data: PropTypes.array.isRequired,
+    offset: PropTypes.number.isRequired,
+    isOpen: PropTypes.bool.isRequired
+}
 
 const MapStateToProps = ({weatherReducer, statusReducer}) => {
     return {
