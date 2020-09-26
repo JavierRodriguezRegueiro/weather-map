@@ -6,7 +6,7 @@ const weatherDefaultValues = {
     summary: '',
     tmp: '',
     precProb: '',
-    hourlyData: {},
+    hourlyData: [{}],
     offset: 1
 };
 

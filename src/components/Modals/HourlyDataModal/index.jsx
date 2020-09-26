@@ -97,7 +97,7 @@ class LineGraph extends React.Component {
 }
 
 HourlyDataModal.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
     offset: PropTypes.number.isRequired,
     isOpen: PropTypes.bool.isRequired
 }

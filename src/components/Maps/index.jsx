@@ -4,7 +4,6 @@ import CityInput from "../CityInput";
 import './Map.css';
 import {connect} from "react-redux";
 import PropTypes from 'prop-types';
-import {Info} from "../Info";
 
 export class Map extends React.PureComponent {
     componentDidMount() {
