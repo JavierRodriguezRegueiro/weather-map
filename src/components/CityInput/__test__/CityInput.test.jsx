@@ -8,12 +8,11 @@ configure({adapter: new Adapter()});
 describe('<CityInput \>', () => {
     let cityInput;
     beforeEach(function () {
-        cityInput = shallow(<CityInput callback={() => {}}/>)
+        cityInput = mount(<CityInput callback={() => {}}/>)
     });
 
     it('Render component without crash', () => {
         expect(cityInput.find('input').props().value).toEqual("");
-        expect(cityInput.props().children[1]).toEqual("");
     });
     it('Change value onChange event', () => {
         const event = {target: {value: 'test'}};

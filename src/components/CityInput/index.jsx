@@ -4,6 +4,12 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 export const CityInput = (props) => {
+    return(
+        <CityInputContainer {...props} />
+    );
+}
+
+const CityInputContainer = ({loading, callback}) => {
     const [content, setContent] = useState('');
     let textInput;
 
@@ -16,17 +22,17 @@ export const CityInput = (props) => {
 
     return (
         <div className='cityInput' onKeyDown={(e) => {
-            handleIntro(e, props.callback, content)
+            handleIntro(e, callback, content)
         }}>
             <input className='cityInput-input' placeholder='Enter city name...' ref={(input) => {
                 textInput = input;
             }} onChange={(e) => {
                 setContent(e.target.value)
             }} value={content}/>
-            {content && !props.loading && <button className='cityInput-removeContentButton' onClick={(e) => {
+            {content && !loading && <button className='cityInput-removeContentButton' onClick={(e) => {
                 setContent('')
             }}/>}
-            {props.loading && <div className='cityInput-loading'/>}
+            {loading && <div className='cityInput-loading'/>}
         </div>
     );
 }
