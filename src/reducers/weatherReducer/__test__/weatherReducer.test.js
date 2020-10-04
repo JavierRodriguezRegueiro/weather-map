@@ -9,7 +9,7 @@ describe('weatherReducer', () => {
         summary: '',
         tmp: '',
         precProb: '',
-        hourlyData: {},
+        hourlyData: [{}],
         offset: 1
     };
     it('should return the initial state', () => {
@@ -24,7 +24,7 @@ describe('weatherReducer', () => {
             summary: 'test',
             tmp: 'test',
             precProb: 'test',
-            hourlyData: {},
+            hourlyData: [{}],
             offset: 1
         };
         const mockedAction = {
