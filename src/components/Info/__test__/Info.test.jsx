@@ -7,9 +7,9 @@ configure({adapter: new Adapter()});
 
 describe('<CityInput \>', () => {
     const mockProps = {
-      summary: 'summary',
-      tmp: 6,
-      precProb: 5
+        summary: 'summary',
+        tmp: 6,
+        precProb: 5
     };
     let info;
     beforeEach(function () {
@@ -19,8 +19,8 @@ describe('<CityInput \>', () => {
         expect(info.find('InfoElement').length).toBe(3);
     });
     it('Check labels', () => {
-        expect(info.childAt(0).props().children[0].props.information).toBe(mockProps.summary);
-        expect(info.childAt(0).props().children[1].props.information).toBe(mockProps.tmp + ' °C');
-        expect(info.childAt(0).props().children[2].props.information).toBe(mockProps.precProb * 100+ '%');
+        expect(info.find('InfoElement').get(0).props).toHaveProperty('information', mockProps.summary);
+        expect(info.find('InfoElement').get(1).props).toHaveProperty('information', mockProps.tmp + ' °C');
+        expect(info.find('InfoElement').get(2).props).toHaveProperty('information', mockProps.precProb * 100 + '%');
     });
 });

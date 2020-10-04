@@ -6,31 +6,8 @@ import PropTypes from "prop-types";
 
 export const Info = (props) => {
     return (
-        <section className='info'>
-            <InfoElement title='Summary' information={props.summary}/>
-            <InfoElement title='Temperature' information={props.tmp + ' °C'}/>
-            <InfoElement title='Precipitation probability' information={props.precProb * 100 + '%'}/>
-            <HourlyButton onClick={() => props.dispatch(setShowHourlyData(true))}/>
-        </section>
+        <InfoContainer {...props} />
     );
-};
-
-const InfoElement = (props) => {
-    return (
-        <div className='infoElement'>
-            <p className='infoElement-title'>{props.title}</p>
-            <p className='infoElement-info'>{props.information}</p>
-        </div>
-    );
-};
-
-const HourlyButton = (props) => {
-    return(
-        <button className='hourtly' onClick={props.onClick}>
-            <div className='hourtly-icon'/>
-            <p className='hourly-label'>Hourly</p>
-        </button>
-        );
 };
 
 Info.propTypes = {
@@ -40,6 +17,62 @@ Info.propTypes = {
 };
 
 Info.defaultProps = {
+    // All props are currently required
+}
+
+const InfoContainer = ({summary, tmp, precProb, dispatch}) => {
+    return (
+        <section className='info'>
+            <InfoElement title='Summary' information={summary}/>
+            <InfoElement title='Temperature' information={tmp + ' °C'}/>
+            <InfoElement title='Precipitation probability' information={precProb * 100 + '%'}/>
+            <HourlyButton onClick={() => dispatch(setShowHourlyData(true))}/>
+        </section>
+    );
+}
+
+InfoContainer.propTypes = {
+    summary: PropTypes.string.isRequired,
+    tmp: PropTypes.number.isRequired,
+    precProb: PropTypes.number.isRequired
+};
+
+InfoContainer.defaultProps = {
+    // All props are currently required
+}
+
+const InfoElement = ({title, information}) => {
+    return (
+        <div className='infoElement'>
+            <p className='infoElement-title'>{title}</p>
+            <p className='infoElement-info'>{information}</p>
+        </div>
+    );
+};
+
+InfoElement.propTypes = {
+    title: PropTypes.string,
+    information: PropTypes.string.isRequired
+};
+
+InfoElement.defaultProps = {
+    title: ''
+}
+
+const HourlyButton = ({onClick}) => {
+    return (
+        <button className='hourtly' onClick={onClick}>
+            <div className='hourtly-icon'/>
+            <p className='hourly-label'>Hourly</p>
+        </button>
+    );
+};
+
+HourlyButton.propTypes = {
+    onClick: PropTypes.func.isRequired
+};
+
+HourlyButton.defaultProps = {
     // All props are currently required
 }
 
