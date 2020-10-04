@@ -38,11 +38,12 @@ const CityInputContainer = ({loading, callback}) => {
 }
 
 CityInput.propTypes = {
-    callback: PropTypes.func.isRequired
+    callback: PropTypes.func.isRequired,
+    loading: PropTypes.bool
 };
 
 CityInput.defaultProps = {
-    // default callback is not defined due to is required
+    loading: false
 }
 
 const MapStateToProps = ({statusReducer}) => {
