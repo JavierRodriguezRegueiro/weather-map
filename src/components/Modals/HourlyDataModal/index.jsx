@@ -63,25 +63,20 @@ class LineGraph extends React.Component {
     handleData = () => {
         // Just the first ten elements will be rendered
         const tenFirstElements = this.props.data.slice(0, 12);
-        this.data = [];
-        this.labels = [];
-        tenFirstElements.forEach((hour) => {
-            const date = new Date(hour.time * 1000);
-            const {hourOffset, min} = this.handleOffset(date);
+        const locationHourOffset = this.handleOffset(new Date(tenFirstElements[0].time * 1000));
+        const localInitialHour = new Date(tenFirstElements[0].time * 1000).getHours()
+        tenFirstElements.forEach((hour, index) => {
+            const locationHour = localInitialHour + index + locationHourOffset
             this.data.push(hour.temperature);
-            this.labels.push(hourOffset + ':' + (min < 10 ? '0' : '') + min);
+            const labelHour = locationHour >= 24 ? locationHour - 24 : locationHour
+            this.labels.push(labelHour + ':00');
         });
     };
 
-    handleOffset = (date) => {
-        const currentOffset = moment().utcOffset();
+    handleOffset = () => {
+        const currentOffset = moment().utcOffset()/60;
         const searchLocationOffset = this.props.offset;
-        let hourOffset = date.getHours() + (searchLocationOffset - currentOffset / 60);
-        hourOffset = hourOffset >= 24 ? hourOffset - 24 : hourOffset;
-        return {
-            hourOffset: hourOffset,
-            min: date.getMinutes()
-        }
+        return searchLocationOffset - currentOffset;
     }
 
     render () {
