@@ -1,6 +1,7 @@
 .info {
     display: flex;
-    position: absolute;
+    grid-area: info;
+    align-self: center;
     bottom: 0;
     width: 100%;
     background-color: white;
@@ -106,6 +107,8 @@
 
 @media (min-aspect-ratio: 11/8){
     .info {
+        justify-self: end;
+        align-self: initial;
         top: 10px;
         right: 10px;
         width: fit-content;

@@ -24,7 +24,7 @@ const CityInputContainer = ({loading, callback}) => {
         <div className='cityInput' onKeyDown={(e) => {
             handleIntro(e, callback, content)
         }}>
-            <input className='cityInput-input' placeholder='Enter city name...' ref={(input) => {
+            <input className='cityInput-input' readOnly={loading} placeholder={'Enter city name...'} ref={(input) => {
                 textInput = input;
             }} onChange={(e) => {
                 setContent(e.target.value)
@@ -51,4 +51,6 @@ const MapStateToProps = ({statusReducer}) => {
         loading: statusReducer.loading
     }
 };
+
+export {CityInputContainer}
 export default connect(MapStateToProps)(CityInput);

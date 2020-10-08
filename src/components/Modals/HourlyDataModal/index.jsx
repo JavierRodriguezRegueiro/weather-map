@@ -10,6 +10,12 @@ if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 export const HourlyDataModal = (props) => {
     return (
+        <HourlyDataModalContainer {...props} />
+    );
+};
+
+const HourlyDataModalContainer = (props) => {
+    return (
         <Modal
             isOpen={props.isOpen}
             onRequestClose={props.onRequestClose}
@@ -20,7 +26,7 @@ export const HourlyDataModal = (props) => {
             <LineGraph data={props.data} offset={props.offset}/>
         </Modal>
     );
-};
+}
 
 
 class LineGraph extends React.Component {
@@ -104,4 +110,6 @@ const MapStateToProps = ({weatherReducer, statusReducer}) => {
         isOpen: statusReducer.showHourly
     }
 };
+
+export {HourlyDataModalContainer}
 export default connect(MapStateToProps)(HourlyDataModal);

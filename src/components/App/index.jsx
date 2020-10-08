@@ -96,7 +96,7 @@ export class App extends React.Component {
 
     render () {
         return (
-            <section>
+            <section className='App'>
                 <InfoModal
                     isOpen={this.getError()}
                     onRequestClose={() => this.setError(false)}

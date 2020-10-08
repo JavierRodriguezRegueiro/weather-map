@@ -84,4 +84,5 @@ const MapStateToProps = ({weatherReducer}) => {
     }
 };
 
+export {InfoContainer}
 export default connect(MapStateToProps)(Info);

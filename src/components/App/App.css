@@ -1,1 +1,16 @@
+.App {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 7fr 2fr;
+    grid-template-areas: 'cityInput''.''info';
+}
 
+@media (min-aspect-ratio: 11/8) {
+    .App {
+        grid-template-columns: 1fr 7fr 7fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 'cityInput . info';
+        padding: 1rem;
+    }
+}
