@@ -6,11 +6,29 @@
     grid-template-areas: 'cityInput''.''info';
 }
 
+.App-cityInput {
+    grid-area: cityInput;
+    justify-self: center;
+    align-self: center;
+}
+
+.App-info {
+    grid-area: info;
+    align-self: center;
+}
+
 @media (min-aspect-ratio: 11/8) {
     .App {
         grid-template-columns: 1fr 7fr 7fr;
         grid-template-rows: 1fr;
         grid-template-areas: 'cityInput . info';
         padding: 1rem;
+    }
+    .App-cityInput {
+        align-self: initial;
+    }
+    .App-info {
+        justify-self: end;
+        align-self: initial;
     }
 }

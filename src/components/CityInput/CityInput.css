@@ -4,10 +4,6 @@
     width: 90%;
     height: 30px;
     border: none;
-    /*TODO: layout from App, change it*/
-    grid-area: cityInput;
-    justify-self: center;
-    align-self: center;
 }
 
 .cityInput-input {
@@ -59,11 +55,5 @@
 @media only screen and (min-width: 700px) {
     .cityInput {
         width: 250px;
-    }
-}
-
-@media (min-aspect-ratio: 11/8) {
-    .cityInput {
-        align-self: initial;
     }
 }

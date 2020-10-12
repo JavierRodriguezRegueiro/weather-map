@@ -1,14 +1,18 @@
 import React from 'react';
-import {shallow, configure, mount} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {CityInput} from '../index';
 
 configure({adapter: new Adapter()});
 
 describe('<CityInput \>', () => {
+    const MockProps = {
+        variantClass: 'mockClass'
+    }
     let cityInput;
+
     beforeEach(function () {
-        cityInput = mount(<CityInput callback={() => {}}/>)
+        cityInput = mount(<CityInput callback={() => {}} variantClass={MockProps.variantClass}/>)
     });
 
     it('Render component without crash', () => {
@@ -40,5 +44,9 @@ describe('<CityInput \>', () => {
     it('should be loading', () => {
         cityInput.setProps({loading: true})
         expect(cityInput.find('div.cityInput-loading').length).toBe(1);
+    });
+    it('should have variant class inside class name', () => {
+        const wrapper = cityInput.find('.cityInput');
+        expect(wrapper.hasClass(MockProps.variantClass)).toBe(true);
     });
 });

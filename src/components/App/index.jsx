@@ -110,8 +110,8 @@ export class App extends React.Component {
                     isOpen={this.getShowHourly()}
                     onRequestClose={() => this.setShowHourly(false)}
                 />
-                <Map callback={this.fetchCityData}/>
-                {this.getSummary() && <Info/>}
+                <Map callback={this.fetchCityData} cityInputVariantClass='App-cityInput'/>
+                {this.getSummary() && <Info variantClass='App-info'/>}
             </section>
         )
     }

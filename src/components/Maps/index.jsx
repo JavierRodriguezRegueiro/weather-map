@@ -9,7 +9,7 @@ export class Map extends React.PureComponent {
     render() {
         return (
             <>
-                <CityInput callback={this.props.callback}/>
+                <CityInput callback={this.props.callback} variantClass={this.props.cityInputVariantClass}/>
                 <MapContainer {...this.props} />
             </>
         );
@@ -19,11 +19,12 @@ export class Map extends React.PureComponent {
 Map.propTypes = {
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
-    zoom: PropTypes.number.isRequired
+    zoom: PropTypes.number.isRequired,
+    cityInputVariantClass: PropTypes.string
 };
 
 Map.defaultProps = {
-    // All props are currently required
+    cityInputVariantClass: ''
 }
 
 const MapStateToProps = ({weatherReducer}) => {

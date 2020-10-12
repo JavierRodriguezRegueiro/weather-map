@@ -13,16 +13,20 @@ export const Info = (props) => {
 Info.propTypes = {
     summary: PropTypes.string.isRequired,
     tmp: PropTypes.number.isRequired,
-    precProb: PropTypes.number.isRequired
+    precProb: PropTypes.number.isRequired,
+    variantClass: PropTypes.string
 };
 
 Info.defaultProps = {
-    // All props are currently required
+    variantClass: ''
 }
 
-const InfoContainer = ({summary, tmp, precProb, dispatch}) => {
+const InfoContainer = ({summary, tmp, precProb, variantClass, dispatch}) => {
+    const handleClassName = () => {
+        return `info ${variantClass}`
+    }
     return (
-        <section className='info'>
+        <section className={handleClassName()}>
             <InfoElement title='Summary' information={summary}/>
             <InfoElement title='Temperature' information={tmp + ' °C'}/>
             <InfoElement title='Precipitation probability' information={precProb * 100 + '%'}/>
@@ -34,11 +38,12 @@ const InfoContainer = ({summary, tmp, precProb, dispatch}) => {
 InfoContainer.propTypes = {
     summary: PropTypes.string.isRequired,
     tmp: PropTypes.number.isRequired,
-    precProb: PropTypes.number.isRequired
+    precProb: PropTypes.number.isRequired,
+    variantClass: PropTypes.string
 };
 
 InfoContainer.defaultProps = {
-    // All props are currently required
+    variantClass: ''
 }
 
 const InfoElement = ({title, information}) => {

@@ -9,7 +9,18 @@ export const CityInput = (props) => {
     );
 }
 
-const CityInputContainer = ({loading, callback}) => {
+CityInput.propTypes = {
+    callback: PropTypes.func.isRequired,
+    variantClass: PropTypes.string,
+    loading: PropTypes.bool
+};
+
+CityInput.defaultProps = {
+    variantClass: '',
+    loading: false
+}
+
+const CityInputContainer = ({loading, callback, variantClass}) => {
     const [content, setContent] = useState('');
     let textInput;
 
@@ -20,8 +31,11 @@ const CityInputContainer = ({loading, callback}) => {
         }
     };
 
+    const handleClassName = () => {
+        return `cityInput ${variantClass}`
+    }
     return (
-        <div className='cityInput' onKeyDown={(e) => {
+        <div className={handleClassName()} onKeyDown={(e) => {
             handleIntro(e, callback, content)
         }}>
             <input className='cityInput-input' readOnly={loading} placeholder={'Enter city name...'} ref={(input) => {
@@ -37,12 +51,14 @@ const CityInputContainer = ({loading, callback}) => {
     );
 }
 
-CityInput.propTypes = {
+CityInputContainer.propTypes = {
     callback: PropTypes.func.isRequired,
+    variantClass: PropTypes.string,
     loading: PropTypes.bool
 };
 
-CityInput.defaultProps = {
+CityInputContainer.defaultProps = {
+    variantClass: '',
     loading: false
 }
 
