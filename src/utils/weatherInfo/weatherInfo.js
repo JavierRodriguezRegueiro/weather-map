@@ -1,7 +1,7 @@
 const DarkSkyToken = '293e087b9cf5f165534f4bea7b451714';
 
 // It is necessary due to avoid cors policy in the browser
-const noCorsMiddleWare = 'https://cors-anywhere.herokuapp.com/';
+const noCorsMiddleWare = 'https://thingproxy.freeboard.io/fetch/';
 const darkSkyUrl = 'https://api.darksky.net/forecast/';
 export const weatherInfo = async (latitude, longitude) => {
     if (typeof latitude !== 'number' || typeof longitude !== 'number') {
